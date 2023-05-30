@@ -9,7 +9,6 @@ app.use(bodyparser.json());
 
 //  Set Static path
 
-
 // Create a set of VAPID Keys
 const publicVapidKey =
   'BNHOKo9OeBSV8gaeF0v3yQU4Wyri5gEnzyAd0OaxtKQTzZY_lv1cIh52Nn68GMWFTrQjNXa1H_tL75bVTxJ6qIw';
@@ -31,7 +30,10 @@ app.post('/subscribe', (req, res) => {
 
   res.status(201).json({});
 
-  const payload = JSON.stringify({ title:'Hey there !!',message: 'Push Notification for Event1' });
+  const payload = JSON.stringify({
+    title: 'Appointment confirmation',
+    message: 'Your Appointment with Dr.John Wick is confirmed',
+  });
 
   webpush
     .sendNotification(subscription, payload)
